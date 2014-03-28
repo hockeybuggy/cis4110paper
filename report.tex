@@ -1,0 +1,123 @@
+%% This is file `elsarticle-template-1-num.tex',
+%% %% Copyright 2009 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.2 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.2 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%%
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%%
+%% $Id: elsarticle-template-1-num.tex 149 2009-10-08 05:01:15Z rishi $
+%% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
+%%
+
+%\documentclass[]{article}
+\documentclass[final,3p,12pt]{elsarticle}
+%\documentclass[final,12pt,times]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{natbib}
+
+
+% http://tex.stackexchange.com/questions/35712/modify-footer-used-by-elsarticle-cls
+\makeatletter
+\def\ps@pprintTitle{
+    \let\@oddhead\@empty
+    \let\@evenhead\@empty
+    \def\@oddfoot{\centerline{\thepage}}
+    \let\@evenfoot\@oddfoot}
+\makeatother
+
+\journal{University of Guelph; CIS*4110}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Exploring the removal of centralized authories from SSL}
+
+
+\author[ryan,doug,oliver]{Douglas Anderson, Eric Boyd, and James Kelly}
+\address[doug]{dander01@uoguelph.ca}
+\address[eric]{epboyd@gmail.com}
+\address[james]{kellyj@uoguelph.ca}
+
+
+\begin{abstract}
+
+    So abstracts are pretty cool and stuff. Good ones have information about
+    the project. This one does not.
+
+\end{abstract}
+
+\begin{keyword}
+% keywords here, in the form: keyword \sep keyword
+Security \sep
+SSL \sep
+Central Authorities
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+\label{intro}
+
+In the modern world the Internet holds a very important role in commerce and
+social aspects of life. Both of these pursuits require the ability for two or
+more parties to communicate securely. To facilitate this secure communication
+the Internet has resorted to using the SSL (Secure Socket Layer) and it
+successor TLS (Transport Security Layer) to protect the data being exchanged.
+These protocols utilize public-private key pairs to facilitate RSA encryption.
+While this protocol has been extremely successful it must rely on a central
+authority to confirm the identity of the owner of public keys.
+
+%TODO mention comodo hack
+
+\section{Method}
+\label{Method}
+
+\section{Results}
+\label{results}
+
+
+\section{Conclusion}
+\label{conclusion}
+
+
+
+\section{Further Work}
+\label{further work}
+
+
+\section{References}
+\label{references}
+\nocite{*}
+\bibliographystyle{plainnat}
+\bibliography{report}
+
+\end{document}
+
