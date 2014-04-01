@@ -65,7 +65,7 @@
 \author[eric]{Eric Boyd}
 \author[james]{James Kelly}
 \address[doug]{dander01@uoguelph.ca}
-\address[eric]{epboyd@gmail.com}
+\address[eric]{boyde@uoguelph.ca}
 \address[james]{kellyj@uoguelph.ca}
 
 
@@ -90,12 +90,15 @@ Central Authorities
 
 In the modern world the Internet holds a very important role in commerce and
 social aspects of life. Both of these pursuits require the ability for two or
-more parties to communicate securely. To facilitate this secure communication
+more parties to communicate securely. To facilitate this secure communication,
 the Internet has resorted to using the SSL (Secure Socket Layer) and it
 successor TLS (Transport Security Layer) to protect the data being exchanged.
 These protocols utilize public-private key pairs to facilitate RSA encryption.
 While this protocol has been extremely successful it must rely on a central
-authority to confirm the identity of the owner of public keys.
+authority to confirm the identity of the owner of public keys. This central
+authority is a single point of failure in this authentication system, and has
+in the past been compromised, allowing successful impersonation of several 
+popular, high profile websites.
 
 %TODO mention comodo hack
 In 2011 the central authority Comodo was hacked and the hacker made off with a
