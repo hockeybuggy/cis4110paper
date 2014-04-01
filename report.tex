@@ -41,6 +41,14 @@
 \usepackage{lipsum}
 \usepackage{natbib}
 
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows}
+
+\tikzstyle{notary} = [rectangle, draw, text centered, text width=4em, fill=blue!20]
+\tikzstyle{user}   = [rectangle, draw, text centered, text width=4em, fill=green!20]
+\tikzstyle{server} = [rectangle, draw, text centered, text width=4em, fill=red!20]
+\tikzstyle{single}   = [draw, -latex']
+\tikzstyle{double}   = [draw, latex-latex']
 
 % http://tex.stackexchange.com/questions/35712/modify-footer-used-by-elsarticle-cls
 \makeatletter
@@ -99,13 +107,13 @@ authority is a single point of failure in this authentication system, and has
 in the past been compromised, allowing successful impersonation of several
 popular, high profile websites.
 
-In 2011 the central authority Comodo Group, Inc. was hacked and the hacker made off with a
-SSL certificates for various sites including Gmail, Yahoo Mail, Hotmail.
-\citep{comodohack} This would allow the hacker to preform man in the middle
-attacks on the sites and read the emails of users of these services. The attack
-was easily executed because of Comodo's extremely weak password that was easily
-broken with a word list. This illustrates the vulnerability in the SSL protocol
-that central authorities create.
+In 2011 the central authority Comodo Group, Inc. was hacked and the hacker made
+off with a SSL certificates for various sites including Gmail, Yahoo Mail,
+Hotmail.  \citep{comodohack} This would allow the hacker to preform man in the
+middle attacks on the sites and read the emails of users of these services. The
+attack was easily executed because of Comodo's extremely weak password that was
+easily broken with a word list. This illustrates the vulnerability in the SSL
+protocol that central authorities create.
 
 \section{Background}
 \label{Background}
@@ -126,12 +134,23 @@ not yet updated it's record of the SSL certificate and reports to the user that
 there is a mismatch which may lead the user to abort their attempt to create an
 SSL connection.
 
+\begin{figure}[h]
+\begin{tikzpicture}[node distance = 4cm, auto]
+    \node[server](server){Server};
+    \node[notary, right of=server](note){Notary};
+    \node[user, below of=server](user){User};
+    \path[double](note) -- node {Notary Queries \& Replies}(user);
+    \path[double](user) -- node {Normal SSL connection}(server);
+    \path[single](note) -- node {Probing}(server);
+\end{tikzpicture}
+\caption{Normal Performance of the perspectives system.}
+\end{figure}
+
 \section{Results}
 \label{results}
 
 \section{Conclusion}
 \label{conclusion}
-
 
 \section{Further Work}
 \label{further work}
