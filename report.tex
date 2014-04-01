@@ -44,9 +44,9 @@
 \usepackage{tikz}
 \usetikzlibrary{shapes, arrows}
 
-\tikzstyle{notary} = [rectangle, draw, text centered, text width=4em, fill=blue!20]
-\tikzstyle{user}   = [rectangle, draw, text centered, text width=4em, fill=green!20]
-\tikzstyle{server} = [rectangle, draw, text centered, text width=4em, fill=red!20]
+\tikzstyle{notary} = [rectangle, draw, text centered, text width=4em, fill=blue!20, minimum height=2em]
+\tikzstyle{user}   = [rectangle, draw, text centered, text width=4em, fill=green!20, minimum height=2em]
+\tikzstyle{server} = [rectangle, draw, text centered, text width=4em, fill=red!20, minimum height=2em]
 \tikzstyle{single}   = [draw, -latex']
 \tikzstyle{double}   = [draw, latex-latex']
 
@@ -122,6 +122,18 @@ protocol that central authorities create.
 %TODO write about how CAs work
 %TODO write about how Perspectives work
 
+\begin{figure}[h]
+\begin{tikzpicture}[node distance = 4cm, auto]
+    \node[server](server){Server};
+    \node[notary, right of=server](note){Notary};
+    \node[user, below of=server](user){User};
+    \path[double](note) -- node {Notary Queries \& Replies}(user);
+    \path[double](user) -- node {Normal SSL connection}(server);
+    \path[single](note) -- node {Probing}(server);
+\end{tikzpicture}
+\caption{Normal Performance of the perspectives system.}
+\end{figure}
+
 \section{Method}
 \label{Method}
 
@@ -142,8 +154,10 @@ SSL connection.
     \path[double](note) -- node {Notary Queries \& Replies}(user);
     \path[double](user) -- node {Normal SSL connection}(server);
     \path[single](note) -- node {Probing}(server);
+    \path[->](server) edge[very thick, bend left=10] node{Probe Request}(note);
 \end{tikzpicture}
-\caption{Normal Performance of the perspectives system.}
+\caption{Our modified perspective notary allows for the server to request that
+    it's SSL certificate be probed and updated in the Notaries Database.}
 \end{figure}
 
 \section{Results}
