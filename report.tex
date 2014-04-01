@@ -21,8 +21,7 @@
 %% $URL: http://lenova.river-valley.com/svn/elsbst/trunk/elsarticle-template-1-num.tex $
 %%
 
-%\documentclass[]{article}
-%\documentclass[final,3p,12pt]{elsarticle}
+%\documentclass[]{article} %\documentclass[final,3p,12pt]{elsarticle}
 %\documentclass[final,12pt,times]{elsarticle}
 
 %% Use the option review to obtain double line spacing
@@ -101,16 +100,34 @@ in the past been compromised, allowing successful impersonation of several
 popular, high profile websites.
 
 In 2011 the central authority Comodo was hacked and the hacker made off with a
-SSL certificates for various sites including Gmail, Yahoo Mail, Hotmail. This
-would allow the hacker to preform man in the middle attacks on the sites and
-read the emails of users of these services.
+SSL certificates for various sites including Gmail, Yahoo Mail, Hotmail.
+\citep{comodohack} This would allow the hacker to preform man in the middle
+attacks on the sites and read the emails of users of these services. The attack
+was easily executed because of Comodo's extremely weak password that was easily
+broken with a word list. This illustrates the vulnerability in the SSL protocol
+that central authorities create.
+
+\section{Background}
+\label{Background}
+
+%TODO write about how SSL works
+%TODO write about how CAs work
+%TODO write about how Perspectives work
 
 \section{Method}
 \label{Method}
 
+For our project we attempted to build upon the Perspective Project by allowing
+servers to send messages to notaries requesting that the notary make note of
+the change of SSL certificate. This fixes the problem in the perspectives
+project that can occur when a server changes it's SSL certificate and a user
+queries the notary for that server's SSL certificate. Because the notary has
+not yet updated it's record of the SSL certificate and reports to the user that
+there is a mismatch which may lead the user to abort their attempt to create an
+SSL connection.
+
 \section{Results}
 \label{results}
-
 
 \section{Conclusion}
 \label{conclusion}
@@ -118,7 +135,6 @@ read the emails of users of these services.
 
 \section{Further Work}
 \label{further work}
-
 
 \section{References}
 \label{references}
