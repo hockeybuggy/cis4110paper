@@ -22,11 +22,11 @@
 %%
 
 %\documentclass[]{article}
-\documentclass[final,3p,12pt]{elsarticle}
+%\documentclass[final,3p,12pt]{elsarticle}
 %\documentclass[final,12pt,times]{elsarticle}
 
 %% Use the option review to obtain double line spacing
-%% \documentclass[preprint,review,12pt]{elsarticle}
+\documentclass[preprint,review,12pt]{elsarticle}
 
 %% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
 %% for a journal layout:
@@ -97,10 +97,9 @@ These protocols utilize public-private key pairs to facilitate RSA encryption.
 While this protocol has been extremely successful it must rely on a central
 authority to confirm the identity of the owner of public keys. This central
 authority is a single point of failure in this authentication system, and has
-in the past been compromised, allowing successful impersonation of several 
+in the past been compromised, allowing successful impersonation of several
 popular, high profile websites.
 
-%TODO mention comodo hack
 In 2011 the central authority Comodo was hacked and the hacker made off with a
 SSL certificates for various sites including Gmail, Yahoo Mail, Hotmail. This
 would allow the hacker to preform man in the middle attacks on the sites and
