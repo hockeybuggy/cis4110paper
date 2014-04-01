@@ -65,8 +65,7 @@
 
 \begin{frontmatter}
 
-\title{Exploring the removal of centralized authories from SSL}
-
+\title{Improving Perspectives by adding functionally to update record of SSL certificates upon request}
 
 \author[doug]{Douglas Anderson}
 \author[eric]{Eric Boyd}
@@ -115,12 +114,15 @@ attack was easily executed because of Comodo's extremely weak password that was
 easily broken with a word list. This illustrates the vulnerability in the SSL
 protocol that central authorities create.
 
-\section{Background}
-\label{Background}
-
-%TODO write about how SSL works
-%TODO write about how CAs work
-%TODO write about how Perspectives work
+This is vulnerability is what the Perspectives project set out to fix. Their
+solution to removing central authorities is to create trusted services known as
+notaries. These notaries work in tandem with a browser extension that allows
+users of the extension to select which of the notaries they would like to
+trust. The system works by checking the SSL certificate signature that they are
+given from the server against the SSL certificates signatures that the users
+trusted notaries have in their databases. If there is a discrepancy between the
+certificate signature that the server has returned and the signatures that the
+notaries have on record, the SSL connection is aborted.
 
 \begin{figure}[h]
 \begin{tikzpicture}[node distance = 4cm, auto]
@@ -146,6 +148,13 @@ not yet updated it's record of the SSL certificate and reports to the user that
 there is a mismatch which may lead the user to abort their attempt to create an
 SSL connection.
 
+For a server notify Perspectives notary it must first know that the notary
+exists. Since the notary presents itself as a normal user of the site when
+performing it probing the server has no idea which of the users it much send a
+probe request to when it changes it's certificate. Because of this short time
+frame we had to work within, we hard coded the address of the notary that the
+server would inform when it changed it's SSL certificate.
+
 \begin{figure}[h]
 \begin{tikzpicture}[node distance = 4cm, auto]
     \node[server](server){Server};
@@ -168,6 +177,17 @@ SSL connection.
 
 \section{Further Work}
 \label{further work}
+
+\begin{enumerate}
+\item{Have notaries identify themselves to servers}
+
+    I would be very beneficial for notaries be able to inform servers that they
+    Perspectives notaries. This would allow servers to keep track of notaries
+    that have a record of them in their database so that when they do make a
+    change to their SSL certificate they can strive that inform all of the
+    notaries that have their old certificate so that it can be updated.
+
+\end{enumerate}
 
 \section{References}
 \label{references}
