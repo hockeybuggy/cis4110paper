@@ -178,14 +178,42 @@ server would inform when it changed it's SSL certificate.
 \section{Further Work}
 \label{further work}
 
-\begin{enumerate}
-\item{Have notaries identify themselves to servers}
+\subsection{Have notaries identify themselves to servers}
 
-    I would be very beneficial for notaries be able to inform servers that they
-    Perspectives notaries. This would allow servers to keep track of notaries
-    that have a record of them in their database so that when they do make a
-    change to their SSL certificate they can strive that inform all of the
-    notaries that have their old certificate so that it can be updated.
+It would be very beneficial for notaries be able to inform servers that they
+Perspectives notaries. This would allow servers to keep track of notaries
+that have a record of them in their database so that when they do make a
+change to their SSL certificate they can strive that inform all of the
+notaries that have their old certificate so that it can be updated.
+
+\subsection{Add preventive measures against DOS}
+
+Since it is relatively computationally expensive for the notary to probe a
+server for a SSL certificate signature it is possible to use these requests to
+make a particular notary unresponsive to user queries. This could allow an
+attacker to perform a man in the middle attack by rendering all of a users
+notaries unresponsive before beginning their attack. While it may be possible
+to prevent this attack on the part of the user by not continuing with the SSL
+connection when none of their trusted notaries respond, This would still be
+undesirable since it would prevent the user from making any secure connections.
+
+\begin{enumerate}
+    \item {Only probe a server when the probe request comes from the server itself}
+
+        By only probing a server when the request comes from the server itself
+        the possibility of external abuse is extremely limited. This method may
+        be hard to implement in practise because it is possible for the
+        attackers to spoof the origin of probe request to be the IP of the
+        server.
+
+    \item {Rate limit probe requests}
+
+        By only allowing a certain number of probe requests in a period of time
+        the notary can ensure that it does not compromise it's ability to
+        respond to user request. This a common DOS prevention technique because
+        of how effective it is, however it is possible that this method would
+        become swamped at certain times since many websites change their SSL
+        certificate at times of low traffic (e.g. 3AM).
 
 \end{enumerate}
 
