@@ -65,7 +65,7 @@
 
 \begin{frontmatter}
 
-\title{Improving the Perspectives Project by creating Notary aware web servers}
+\title{Improving on Existing Distributed Supplement to Certificate Authorities}
 
 \author[doug]{Douglas Anderson}
 \author[eric]{Eric Boyd}
@@ -195,18 +195,15 @@ agent string was:
 \end{figure}
 
 When a server changes its SSL certificate, it sends an HTTP request to all of
-the notaries it is aware of. In our implementation, we simply have the web
-server load a web page on the notary servers, that triggers that notary to
-rescan its certificate and update its records appropriately. The request is
-in the following form, where, ServerURL is simply the URL that requires
-updating of its SSL certificate in the notary records, and update is a web
-program to accomplish this task:
+the notaries it is aware of.  Those requests triggers the notaries to rescan
+the URL of the server and update their records appropriately. The request is in
+the following form, where, ServerURL is simply the URL that requires updating
+of its SSL certificate in the notary records, and update is a web program to
+accomplish this task:
 
 \begin{verbatim}
     http://<Notary URL>/update?host=ServerURL
 \end{verbatim}
-
-
 
 \section{Results}
 \label{results}
@@ -240,8 +237,6 @@ certificate shortly after it is probed, the notary could be reporting the wrong
 certificate for up to a full day.  When comparing several hours to several
 seconds, it becomes clear how creating notary aware servers is a great benefit
 for the integrity of the system.
-
-
 
 \section{Conclusion}
 \label{conclusion}
