@@ -208,14 +208,14 @@ the perspective server. The request is in the following form:
 \label{results}
 
 Our testing was confined to a single web server and two notary servers. Our
-results were positive, updating the notary servers within seconds or receiving
+results were positive, updating the notary servers within seconds on receiving
 a probe request. It is hard to directly compare this to characteristics of the
-original Notaries because each notary updates itself on a schedule. If a Notary
-probes it's known sites once every day (as the documentation recommends), and
-the server changes it's SSL certificate shortly after it is probed the Notary
-could be reporting the wrong certificate for up to a full day. When comparing
-several hours to several seconds, it becomes clear how creating Notary aware
-servers is a great benefit for the integrity of the system.
+original notaries because each notary updates itself on a schedule. If a notary
+probes its known sites once every day as recommended in the Perspectives Project's
+documentation, and the server changes its SSL certificate shortly after it is 
+probed, the notary could be reporting the wrong certificate for up to a full day.
+When comparing several hours to several seconds, it becomes clear how creating 
+notary aware servers is a great benefit for the integrity of the system.
 
 \section{Conclusion}
 \label{conclusion}
