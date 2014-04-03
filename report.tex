@@ -92,7 +92,7 @@ certificates observed by the notaries. Our augmentation to the Perspectives
 system allows web servers currently being monitored by a number of notaries to
 send a message to each of these notaries when the server changes their SSL 
 certificate. This mitigates the lag between the certificate change and 
-observation and therefore protects the users more efficeiently.
+observation and therefore protects the users more efficiently.
 
 \end{abstract}
 
@@ -186,11 +186,29 @@ the address of the notary that the server would inform when its SSL certificate 
     \path[->](server) edge[very thick, bend left=10] node{Probe Request}(note);
 \end{tikzpicture}
 \caption{Our modified perspective notary allows for the server to request that
-    it's SSL certificate be probed and updated in the Notaries Database.}
+    its SSL certificate be probed and updated in the Notaries Database.}
 \end{figure}
 
 \section{Results}
 \label{results}
+
+Our augmentation of the Perspectives system helps protect users by creating a
+method to keep Notaries more up to date, which allows the system to do a better
+job of validating signatures by reducing the false negative rate. This tendency
+for Notaries to incorrectly refute a site's SSL certificate signature because
+it is slow to update it's records is an issue with the current Perspectives
+implementation. By adding the mechanisms to create notary aware servers, we
+have improved the integrity of the system.
+
+Our testing was confined to a single web server and two notary servers. Our
+results were positive, updating the notary servers within seconds or receiving
+a probe request. It is hard to directly compare this to characteristics of the
+original Notaries because each notary updates itself on a schedule. If a Notary
+probes it's known sites once every day (as the documentation recommends), and
+the server changes it's SSL certificate shortly after it is probed the Notary
+could be reporting the wrong certificate for up to a full day. When comparing
+several hours to several seconds, it becomes clear how creating Notary aware
+servers is a great benefit for the integrity of the system.
 
 \section{Conclusion}
 \label{conclusion}
