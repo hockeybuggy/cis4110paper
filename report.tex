@@ -32,7 +32,7 @@
 %% \documentclass[final,1p,times]{elsarticle}
 %% \documentclass[final,1p,times,twocolumn]{elsarticle}
 %% \documentclass[final,3p,times]{elsarticle}
- %\documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
 %% \documentclass[final,5p,times]{elsarticle}
 %% \documentclass[final,5p,times,twocolumn]{elsarticle}
 
@@ -81,17 +81,18 @@ Today's web is secured with SSL and TLS, which utilizes RSA to create secure
 connections between servers and users. To ensure that the users are
 communicating with the web server they intend and not someone masquerading as
 the server, Certificate Authorities (CAs) are considered to be secure trusted
-parties that can confirm the identity of the server. However, CAs
- can be compromised leaving users vulnerable. In an effort to fix the
-weaknesses in the central authorities, The Perspectives Project uses a
-constellation of Notary Servers spread out across the Internet to monitor the
-SSL certificate signatures over time. Users install a web browser extension that
+parties that can confirm the identity of the server. While better than a 
+completely insecure protocol, CAs can be compromised with Man-In-The-Middle
+(MitM) attacks and leave users vulnerable. In an effort to fix this
+weaknesses in the CA, The Perspectives Project uses a
+constellation of notary servers spread out across the Internet to monitor the
+SSL certificate signatures over time. Users install a Firefox extension that
 compares the signature of the certificate given to them from the server to the
 certificates observed by the notaries. Our augmentation to the Perspectives
-system allows web servers being monitored by a number of Notaries to send a
-message to each of the Notaries when the server changes their SSL certificate.
-This mitigates the lag between the certificate change and observation better
-protecting users.
+system allows web servers currently being monitored by a number of notaries to
+send a message to each of these notaries when the server changes their SSL 
+certificate. This mitigates the lag between the certificate change and 
+observation and therefore protects the users more efficeiently.
 
 \end{abstract}
 
@@ -99,37 +100,38 @@ protecting users.
 % keywords here, in the form: keyword \sep keyword
 Security \sep
 SSL \sep
-Central Authorities \sep
+Certificate Authorities \sep
 Perspectives
 \end{keyword}
 
 \end{frontmatter}
 
-\section{Background}
-\label{background}
+\section{Introduction}
+\label{intro}
 
 In the modern world the Internet holds a very important role in commerce and
-social aspects of life. Both of these pursuits require the ability for two or
+social aspects of life and both of these pursuits require the ability for two or
 more parties to communicate securely. To facilitate this secure communication,
 the Internet has resorted to using the SSL (Secure Socket Layer) and it
 successor TLS (Transport Security Layer) to protect the data being exchanged.
 These protocols utilize public-private key pairs to facilitate RSA encryption.
-While this protocol has been extremely successful it must rely on a CA to
+While this protocol has been extremely successful it must rely on a Certificate Authority (CA) to
 confirm the identity of the owner of public keys. While it is possible to
-create `self-signed' certificates browsers will warn users if a site uses one
+create `self-signed' certificates, browsers will warn users if a site uses one
 of these certificate since it is impossible to verify who created the
 certificate. 
 
-Certificate Authorities are is a single point of failure in this authentication
-system, and has in the past been compromised, allowing successful impersonation
+Certificate Authorities are points in a network that issues and manages
+security credentials and public keys for message encryption. CAs have been 
+compromised in the past, allowing successful impersonation
 of several popular, high profile websites.  In 2011 the central authority
-Comodo Group, Inc. was hacked and the hacker made off with a SSL certificates
-for various sites including Gmail, Yahoo Mail, Hotmail.  \citep{comodohack}
-This would allow the hacker to preform man in the middle attacks on the sites
-and read the emails of users of these services. The attack was easily executed
+Comodo Group, Inc. was hacked. The attack was easily executed
 because of Comodo's extremely weak password that was easily broken with a word
-list. This illustrates the vulnerability in the SSL protocol that central
-authorities create.
+list and the hacker made off with the SSL certificates
+for various sites including Gmail, Yahoo Mail, Hotmail.  \citep{comodohack}
+This would allow the hacker to preform M attacks on the sites
+and was then able to read the site user's emails.  This illustrates the vulnerability
+in the SSL protocol that central authorities create.
 
 This is vulnerability is what the Perspectives project set out to fix. Their
 solution to removing central authorities is to create trusted services known as
@@ -153,10 +155,10 @@ notaries have on record, the SSL connection is aborted.
 \caption{Normal Performance of the perspectives system.}
 \end{figure}
 
-\section{Implementation}
-\label{implementation}
+\section{Method}
+\label{Method}
 
-We attempted to build upon the Perspective Project by allowing
+For our project we attempted to build upon the Perspective Project by allowing
 servers to send messages to notaries requesting that the notary make note of
 the change of SSL certificate. This fixes the problem in the perspectives
 project that can occur when a server changes it's SSL certificate and a user
@@ -166,14 +168,11 @@ there is a mismatch which may lead the user to abort their attempt to create an
 SSL connection.
 
 For a server notify Perspectives notary it must first know that the notary
-exists. To facilitate this we added a user agent string to the notaries
-scanning facilities. This allows notary aware web servers to add any users with
-the Notary user agent string to the list of known notaries. In our
-implementation the notaries user agent string was:
-
-\begin{verbatim}
-    Perspectives-Notary/4.4
-\end{verbatim}
+exists. Since the notary presents itself as a normal user of the site when
+performing it probing the server has no idea which of the users it much send a
+probe request to when it changes it's certificate. Because of this short time
+frame we had to work within, we hard coded the address of the notary that the
+server would inform when it changed it's SSL certificate.
 
 \begin{figure}[h]
 \begin{tikzpicture}[node distance = 4cm, auto]
@@ -189,39 +188,22 @@ implementation the notaries user agent string was:
     it's SSL certificate be probed and updated in the Notaries Database.}
 \end{figure}
 
-When a server changes it's SSL certificate, it sends an HTTP request to all of
-the notaries it is aware of. Due to the distributed nature of the notaries, the
-change is permitted to propagate within the notary network. In our
-implementation we used extended the query string of the HTTP GET requests that
-the perspective server. The request is in the following form:
-
-
-\begin{verbatim}
-    http://<Notary URL>/?host=<Server URL>&update=certificate
-\end{verbatim}
-
-Notary web-crawlers make themselves known to webservers, by setting a custom
-HTTP user-agent string, similar to how Google and other search engine's
-web-crawlers function. If webservers take note of the notaries checking their
-certificates, by checking for this user-agent string, they know how recent their
-SSL certificate entry is within the notary network system.
-
 \section{Results}
 \label{results}
-
-Our augmentation of the Perspectives system helps protect users by creating a
-method to keep Notaries more up to date, which allows the system to do a better
-job of validating signatures by reducing the false negative rate. This tendency
-for Notaries to incorrectly refute a site's SSL certificate signature because
-it is slow to update it's records is an issue with the current Perspectives
-implementation. By adding the mechanisms to create notary aware servers, we
-have improved the integrity of the system.
 
 \section{Conclusion}
 \label{conclusion}
 
 \section{Further Work}
 \label{further work}
+
+\subsection{Have notaries identify themselves to servers}
+
+It would be very beneficial for notaries be able to inform servers that they
+Perspectives notaries. This would allow servers to keep track of notaries
+that have a record of them in their database so that when they do make a
+change to their SSL certificate they can strive that inform all of the
+notaries that have their old certificate so that it can be updated.
 
 \subsection{Add preventive measures against DOS}
 
