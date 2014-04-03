@@ -114,19 +114,22 @@ more parties to communicate securely. To facilitate this secure communication,
 the Internet has resorted to using the SSL (Secure Socket Layer) and it
 successor TLS (Transport Security Layer) to protect the data being exchanged.
 These protocols utilize public-private key pairs to facilitate RSA encryption.
-While this protocol has been extremely successful it must rely on a central
-authority to confirm the identity of the owner of public keys. This central
-authority is a single point of failure in this authentication system, and has
-in the past been compromised, allowing successful impersonation of several
-popular, high profile websites.
+While this protocol has been extremely successful it must rely on a CA to
+confirm the identity of the owner of public keys. While it is possible to
+create `self-signed' certificates browsers will warn users if a site uses one
+of these certificate since it is impossible to verify who created the
+certificate. 
 
-In 2011 the central authority Comodo Group, Inc. was hacked and the hacker made
-off with a SSL certificates for various sites including Gmail, Yahoo Mail,
-Hotmail.  \citep{comodohack} This would allow the hacker to preform man in the
-middle attacks on the sites and read the emails of users of these services. The
-attack was easily executed because of Comodo's extremely weak password that was
-easily broken with a word list. This illustrates the vulnerability in the SSL
-protocol that central authorities create.
+Certificate Authorities are is a single point of failure in this authentication
+system, and has in the past been compromised, allowing successful impersonation
+of several popular, high profile websites.  In 2011 the central authority
+Comodo Group, Inc. was hacked and the hacker made off with a SSL certificates
+for various sites including Gmail, Yahoo Mail, Hotmail.  \citep{comodohack}
+This would allow the hacker to preform man in the middle attacks on the sites
+and read the emails of users of these services. The attack was easily executed
+because of Comodo's extremely weak password that was easily broken with a word
+list. This illustrates the vulnerability in the SSL protocol that central
+authorities create.
 
 This is vulnerability is what the Perspectives project set out to fix. Their
 solution to removing central authorities is to create trusted services known as
@@ -137,8 +140,6 @@ given from the server against the SSL certificates signatures that the users
 trusted notaries have in their databases. If there is a discrepancy between the
 certificate signature that the server has returned and the signatures that the
 notaries have on record, the SSL connection is aborted.
-
-%TODO mention self signed certs
 
 \begin{figure}[h]
 \begin{tikzpicture}[node distance = 4cm, auto]
