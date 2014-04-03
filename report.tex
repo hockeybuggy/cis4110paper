@@ -32,7 +32,7 @@
 %% \documentclass[final,1p,times]{elsarticle}
 %% \documentclass[final,1p,times,twocolumn]{elsarticle}
 %% \documentclass[final,3p,times]{elsarticle}
-%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+ %\documentclass[final,3p,times,twocolumn]{elsarticle}
 %% \documentclass[final,5p,times]{elsarticle}
 %% \documentclass[final,5p,times,twocolumn]{elsarticle}
 
@@ -208,6 +208,14 @@ SSL certificate entry is within the notary network system.
 
 \section{Results}
 \label{results}
+
+Our augmentation of the Perspectives system helps protect users by creating a
+method to keep Notaries more up to date, which allows the system to do a better
+job of validating signatures by reducing the false negative rate. This tendency
+for Notaries to incorrectly refute a site's SSL certificate signature because
+it is slow to update it's records is an issue with the current Perspectives
+implementation. By adding the mechanisms to create notary aware servers, we
+have improved the integrity of the system.
 
 \section{Conclusion}
 \label{conclusion}
