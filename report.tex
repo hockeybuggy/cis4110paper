@@ -169,17 +169,12 @@ not yet updated its record of the SSL certificate the notary reports to the user
 there is a mismatch which may lead the user to abort their attempt to create an
 SSL connection.
 
-For a server notify Perspectives notary it must first know that the notary
-exists. To facilitate this we added a user agent string to the notaries
-scanning facilities. This allows notary aware web servers to add any users with
-the Notary user agent string to the list of known notaries. In our
-implementation the notaries user agent string was:
-
 Notary web-crawlers make themselves known to web servers, by setting a custom
 HTTP user-agent string, similar to how Google and other search engine's
 web-crawlers function. If web servers take note of the notaries checking their
-certificates, by checking for this user-agent string, they know how recent their
-SSL certificate entry is within the notary network system.
+certificates, by checking for this user-agent string, they know how recent
+their SSL certificate entry is within the notary network system. In our
+implementation the notaries user agent string was:
 
 \begin{verbatim}
     Perspectives-Notary/4.4
@@ -212,14 +207,6 @@ the perspective server. The request is in the following form:
 \section{Results}
 \label{results}
 
-Our augmentation of the Perspectives system helps protect users by creating a
-method to keep Notaries more up to date, which allows the system to do a better
-job of validating signatures by reducing the false negative rate. This tendency
-for Notaries to incorrectly refute a site's SSL certificate signature because
-it is slow to update it's records is an issue with the current Perspectives
-implementation. By adding the mechanisms to create notary aware servers, we
-have improved the integrity of the system.
-
 Our testing was confined to a single web server and two notary servers. Our
 results were positive, updating the notary servers within seconds or receiving
 a probe request. It is hard to directly compare this to characteristics of the
@@ -232,6 +219,14 @@ servers is a great benefit for the integrity of the system.
 
 \section{Conclusion}
 \label{conclusion}
+
+Our augmentation of the Perspectives system helps protect users by creating a
+method to keep Notaries more up to date, which allows the system to do a better
+job of validating signatures by reducing the false negative rate. This tendency
+for Notaries to incorrectly refute a site's SSL certificate signature because
+it is slow to update it's records is an issue with the current Perspectives
+implementation. By adding the mechanisms to create notary aware servers, we
+have improved the integrity of the system.
 
 \section{Further Work}
 \label{further work}
