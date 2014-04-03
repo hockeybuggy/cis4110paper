@@ -170,12 +170,12 @@ user that there is a mismatch which may lead the user to abort their attempt to
 create an SSL connection.
 
 Notary web-crawlers make themselves known to web servers by setting a custom
-HTTP user-agent string in a manner similar to how Google and other search engines'
-web-crawlers function. When a web server observes a notary checking its
-certificate, it does so by checking the user-agent string of the notary's request.
-By doing this the server knows how recent its SSL certificate entry is within the 
-notary network system. 
-In our implementation the notaries user agent string was:
+HTTP user-agent string in a manner similar to how Google and other search
+engines' web-crawlers function. When a web server observes a notary checking
+its certificate, it does so by checking the user-agent string of the notary's
+request.  By doing this the server knows how recent its SSL certificate entry
+is within the notary network system.  In our implementation the notaries user
+agent string was:
 
 \begin{verbatim}
     Perspectives-Notary/4.4
