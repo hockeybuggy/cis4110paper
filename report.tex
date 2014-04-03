@@ -195,14 +195,16 @@ implementation the notaries user agent string was:
 \end{figure}
 
 When a server changes it's SSL certificate, it sends an HTTP request to all of
-the notaries it is aware of. Due to the distributed nature of the notaries, the
-change is permitted to propagate within the notary network. In our
-implementation we used extended the query string of the HTTP GET requests that
-the perspective server. The request is in the following form:
+the notaries it is aware of. In our implementation, we simply have the webserver
+load a webpage on the notary servers, that triggers that notary to rescan it's 
+certificate and update it's records appropriately. The request is in the following 
+form:
 
 \begin{verbatim}
     http://<Notary URL>/?host=<Server URL>&update=certificate
 \end{verbatim}
+
+
 
 \section{Results}
 \label{results}
