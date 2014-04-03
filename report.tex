@@ -135,12 +135,12 @@ user's computers into believing the fake SSL certificates were genuine and the h
 then able to read the site user's emails.  This illustrates the vulnerability
 in the SSL protocol that central authorities create.
 
-This is vulnerability is what the Perspectives project set out to fix. Their
+This vulnerability is what the Perspectives Project sets out to fix. Their
 solution to removing central authorities is to create trusted services known as
 notaries. These notaries work in tandem with a browser extension that allows
 users of the extension to select which of the notaries they would like to
-trust. The system works by checking the SSL certificate signature that they are
-given from the server against the SSL certificates signatures that the users
+trust. The system works by checking the SSL certificate signature they are
+given from the server against the SSL certificate signatures that the user's
 trusted notaries have in their databases. If there is a discrepancy between the
 certificate signature that the server has returned and the signatures that the
 notaries have on record, the SSL connection is aborted.
