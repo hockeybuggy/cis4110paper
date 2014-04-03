@@ -166,11 +166,13 @@ there is a mismatch which may lead the user to abort their attempt to create an
 SSL connection.
 
 For a server notify Perspectives notary it must first know that the notary
-exists. Since the notary presents itself as a normal user of the site when
-performing it probing the server has no idea which of the users it much send a
-probe request to when it changes it's certificate. Because of this short time
-frame we had to work within, we hard coded the address of the notary that the
-server would inform when it changed it's SSL certificate.
+exists. To facilitate this we added a user agent string to the notaries
+scanning facilities. This allows notary aware web servers to add any users with
+the Notary user agent string to the list of known notaries. In our implementation the notaries user agent string was:
+
+\begin{verbatim}
+    Perspectives-Notary/4.4
+\end{verbatim}
 
 \begin{figure}[h]
 \begin{tikzpicture}[node distance = 4cm, auto]
@@ -186,10 +188,10 @@ server would inform when it changed it's SSL certificate.
     it's SSL certificate be probed and updated in the Notaries Database.}
 \end{figure}
 
-When a server changes it's SSL certificate it sends a HTTP request to all of
-the notaries it is aware of. In our implementation we used extended the query
-string of the HTTP GET requests that the perspective server. The request is in
-the following form:
+When a server changes it's SSL certificate it sends a HTTP probe request to all
+of the notaries it is aware of. In our implementation we extended the query
+string of the HTTP GET requests that the perspective server. The probe request
+is in the following form:
 
 \begin{verbatim}
     http://<Notary URL>/?host=<Server URL>&update=certificate
