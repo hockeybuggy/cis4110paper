@@ -123,13 +123,12 @@ certificate.
 
 Certificate Authorities are points in a network that issues and manages
 security credentials and public keys for message encryption. CAs have been 
-compromised in the past, allowing successful impersonation
+compromised in the past resulting in successful impersonations
 of several popular, high profile websites.  In 2011 the central authority
 Comodo Group, Inc. was hacked. The attack was easily executed
-because of Comodo's extremely weak password that was easily broken with a word
-list and the hacker made off with the SSL certificates
-for various sites including Gmail, Yahoo Mail, Hotmail.  \citep{comodohack}
-This would allow the hacker to preform M attacks on the sites
+because of Comodo's extremely weak password system that was easily broken with a word
+list. The hacker made off with the SSL certificates for various sites including Gmail, Yahoo Mail, Hotmail.  \citep{comodohack}
+This would allow the hacker to preform Man-in-the-Middle (MitM) attacks on the sites
 and was then able to read the site user's emails.  This illustrates the vulnerability
 in the SSL protocol that central authorities create.
 
