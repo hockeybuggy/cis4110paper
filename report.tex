@@ -207,15 +207,37 @@ the perspective server. The request is in the following form:
 \section{Results}
 \label{results}
 
-Our testing was confined to a single web server and two notary servers. Our
-results were positive, updating the notary servers within seconds on receiving
-a probe request. It is hard to directly compare this to characteristics of the
-original notaries because each notary updates itself on a schedule. If a notary
-probes its known sites once every day as recommended in the Perspectives Project's
-documentation, and the server changes its SSL certificate shortly after it is 
-probed, the notary could be reporting the wrong certificate for up to a full day.
-When comparing several hours to several seconds, it becomes clear how creating 
-notary aware servers is a great benefit for the integrity of the system.
+Our testing was confined to a single web server and two notary servers. One of
+the notaries was run alongside the web server on a machine somewhere in North
+Virgina provisioned from Amazon. In order to ensure that the notaries were
+located in different places, and therefore had different perspectives, we also
+provisioned a server from Amazon in Oregon. The web server was protected with a
+self signed certificate. We added the two notaries to a Firefox extension
+running on one of our local machines, and connected to the web server. On the
+first connect both notaries correctly responded with a 404 since they had no
+record of the web server. After this both of the servers probed the web server
+and added it's SSL certificate signature to their list monitored sites. The web
+server saw the user agent strings of the Notaries and added them to it's list
+of Notaries. After refreshing the browser both notary services responded and
+confirmed that they had found the same SSL signature.
+
+We then changed the SSL certificate of the web server. Once we had done so the
+server sent a probe request to all to the Notaries the server was aware of.
+Both of the notaries added the URL of the server to their list of update
+requests. The Notaries then re-probed the web server and updated their records
+of the SSL certificate.
+
+Our results were positive, updating the notary servers within seconds on
+receiving a probe request. It is hard to directly compare this to
+characteristics of the original notaries because each notary updates itself on
+a schedule. If a notary probes its known sites once every day as recommended in
+the Perspectives Project's documentation, and the server changes its SSL
+certificate shortly after it is probed, the notary could be reporting the wrong
+certificate for up to a full day.  When comparing several hours to several
+seconds, it becomes clear how creating notary aware servers is a great benefit
+for the integrity of the system.
+
+
 
 \section{Conclusion}
 \label{conclusion}
