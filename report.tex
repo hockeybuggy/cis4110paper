@@ -105,8 +105,8 @@ Perspectives
 
 \end{frontmatter}
 
-\section{Introduction}
-\label{intro}
+\section{Background}
+\label{background}
 
 In the modern world the Internet holds a very important role in commerce and
 social aspects of life. Both of these pursuits require the ability for two or
@@ -153,8 +153,8 @@ notaries have on record, the SSL connection is aborted.
 \caption{Normal Performance of the perspectives system.}
 \end{figure}
 
-\section{Method}
-\label{Method}
+\section{Implementation}
+\label{implementation}
 
 We attempted to build upon the Perspective Project by allowing
 servers to send messages to notaries requesting that the notary make note of
@@ -185,6 +185,15 @@ server would inform when it changed it's SSL certificate.
 \caption{Our modified perspective notary allows for the server to request that
     it's SSL certificate be probed and updated in the Notaries Database.}
 \end{figure}
+
+When a server changes it's SSL certificate it sends a HTTP request to all of
+the notaries it is aware of. In our implementation we used extended the query
+string of the HTTP GET requests that the perspective server. The request is in
+the following form:
+
+\begin{verbatim}
+    http://<Notary URL>/?host=<Server URL>&update=certificate
+\end{verbatim}
 
 \section{Results}
 \label{results}
