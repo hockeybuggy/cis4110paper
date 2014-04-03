@@ -161,11 +161,11 @@ notaries have on record, the SSL connection is aborted.
 \label{Method}
 
 For our project we attempted to build upon the Perspective Project by allowing
-servers to send messages to notaries requesting that the notary make note of
-the change of SSL certificate. This fixes the problem in the perspectives
-project that can occur when a server changes it's SSL certificate and a user
+servers to send messages to notaries requesting that each notary acknowledge
+the change of the SSL certificate. This fixes the problem in the Perspectives
+Project that can occur when a server changes its SSL certificate and a user
 queries the notary for that server's SSL certificate. Because the notary has
-not yet updated it's record of the SSL certificate and reports to the user that
+not yet updated its record of the SSL certificate the notery reports to the user that
 there is a mismatch which may lead the user to abort their attempt to create an
 SSL connection.
 
