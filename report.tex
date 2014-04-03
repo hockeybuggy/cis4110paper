@@ -195,6 +195,12 @@ the following form:
 \begin{verbatim}
     http://<Notary URL>/?host=<Server URL>&update=certificate
 \end{verbatim}
+\.
+Notary web-crawlers make themselves known to webservers, by setting a custom
+HTTP user-agent string, similar to how Google and other search engine's web-crawlers
+function. If webservers take note of the notaries checking their cerficates,
+by checking for this user-agent string, they know how recent their SSL certificate
+entry is within the notary network system.
 
 \section{Results}
 \label{results}
@@ -204,14 +210,6 @@ the following form:
 
 \section{Further Work}
 \label{further work}
-
-\subsection{Have notaries identify themselves to servers}
-
-It would be very beneficial for notaries be able to inform servers that they
-Perspectives notaries. This would allow servers to keep track of notaries
-that have a record of them in their database so that when they do make a
-change to their SSL certificate they can strive that inform all of the
-notaries that have their old certificate so that it can be updated.
 
 \subsection{Add preventive measures against DOS}
 
