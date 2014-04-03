@@ -165,15 +165,19 @@ servers to send messages to notaries requesting that each notary acknowledge
 the change of the SSL certificate. This fixes the problem in the Perspectives
 Project that can occur when a server changes its SSL certificate and a user
 queries the notary for that server's SSL certificate. Because the notary has
-not yet updated its record of the SSL certificate the notery reports to the user that
+not yet updated its record of the SSL certificate the notary reports to the user that
 there is a mismatch which may lead the user to abort their attempt to create an
 SSL connection.
 
-To send message requests to any notary, a server must first know if the notary exists. 
-Since the notary presents itself as a normal user of the site when
-it's probing, the server can not distinguish which of the users it must send a
-probe request. Because of the short timeframe we had to work within, we hard-coded 
-the address of the notary that the server would inform when its SSL certificate changes.
+For a server notify Perspectives notary it must first know that the notary
+exists. To facilitate this we added a user agent string to the notaries
+scanning facilities. This allows notary aware web servers to add any users with
+the Notary user agent string to the list of known notaries. In our
+implementation the notaries user agent string was:
+
+\begin{verbatim}
+    Perspectives-Notary/4.4
+\end{verbatim}
 
 \begin{figure}[h]
 \begin{tikzpicture}[node distance = 4cm, auto]
