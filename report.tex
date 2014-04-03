@@ -77,8 +77,21 @@
 
 \begin{abstract}
 
-    So abstracts are pretty cool and stuff. Good ones have information about
-    the project. This one does not.
+Today's web is secured with SSL and TLS, which utilizes RSA to create secure
+connections between servers and users. To ensure that the users are
+communicating with the web server they intend and not someone masquerading as
+the server, Certificate Authorities (CAs) are considered to be secure trusted
+parties that can confirm the identity of the server. However, CAs are not Fort
+Knox and can be compromised leaving users vulnerable. In an effort to fix the
+weaknesses in the central authorities, The Perspectives Project uses a
+constellation of Notary Servers spread out across the Internet to monitor the
+SSL certificate signatures over time. Users install a Firefox extension that
+compares the signature of the certificate given to them from the server to the
+certificates observed by the notaries. Our augmentation to the Perspectives
+system allows web servers being monitored by a number of Notaries to send a
+message to each of the Notaries when the server changes their SSL certificate.
+This mitigates the lag between the certificate change and observation better
+protecting users.
 
 \end{abstract}
 
@@ -86,7 +99,8 @@
 % keywords here, in the form: keyword \sep keyword
 Security \sep
 SSL \sep
-Central Authorities
+Central Authorities \sep
+Perspectives
 \end{keyword}
 
 \end{frontmatter}
@@ -123,6 +137,8 @@ given from the server against the SSL certificates signatures that the users
 trusted notaries have in their databases. If there is a discrepancy between the
 certificate signature that the server has returned and the signatures that the
 notaries have on record, the SSL connection is aborted.
+
+%TODO mention self signed certs
 
 \begin{figure}[h]
 \begin{tikzpicture}[node distance = 4cm, auto]
