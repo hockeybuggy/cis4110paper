@@ -259,8 +259,19 @@ undesirable since it would prevent the user from making any secure connections.
         of how effective it is, however it is possible that this method would
         become swamped at certain times since many websites change their SSL
         certificate at times of low traffic (e.g. 3AM).
-
 \end{enumerate}
+
+\subsection{Test our implementation more rigorously}
+
+Because of the limited time frame of the project we did not have an opportunity
+to test our implementation as rigorously as we would have liked. Being a
+computer security project the robustness of the system is of utmost importance.
+Some further work could include expanding the system to many Notary aware
+servers and many Notaries that respond to probing requests.
+
+Our Implementation would also benefit from testing with malicious clients. This
+could include clients using user agent string spoofing in order to find out
+when a server changes it's SSL certificate.
 
 \section{References}
 \label{references}
