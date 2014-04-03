@@ -85,13 +85,13 @@ parties that can confirm the identity of the server. CAs can be compromised
 with Man-in-the-Middle (MitM) attacks which leaves users vulnerable. In an
 effort to fix this weaknesses in the CA, The Perspectives Project uses a
 constellation of notary servers spread out across the Internet to monitor the
-SSL certificate signatures over time. Users install a Firefox extension that
-compares the signature of the certificate given to them from the server to the
-certificates observed by the notaries. Our augmentation to the Perspectives
-system allows web servers currently being monitored by a number of notaries to
-send a message to each of these notaries when the server changes their SSL
-certificate. This mitigates the lag between the certificate change and
-observation and therefore protects the users more efficiently.
+SSL certificate signatures over time. Users install a Firefox web browser
+extension that compares the signature of the certificate given to them from the
+server to the certificates observed by the notaries. Our augmentation to the
+Perspectives system allows web servers currently being monitored by a number of
+notaries to send a message to each of these notaries when the server changes
+their SSL certificate. This mitigates the lag between the certificate change
+and observation and therefore protects the users more efficiently.
 
 \end{abstract}
 
@@ -118,21 +118,21 @@ encryption.  While this protocol has been extremely successful it must rely on
 a Certificate Authority (CA) to confirm the identity of the owner of public
 keys. While it is possible to create `self-signed' certificates, browsers will
 warn users if a site uses one of these certificate since it is impossible to
-verify who created the certificate. 
+verify who created the certificate.
 
 Certificate Authorities are points in a network that issues and manages
 security credentials and public keys for message encryption. CAs have been
 compromised in the past resulting in successful impersonations of several
 popular, high profile websites.  In 2011 the central authority Comodo Group,
 Inc. was hacked. The attack was easily executed because of Comodo's extremely
-weak password system that was easily broken with a word list. The hacker made
-off with the SSL certificates for various sites including Gmail, Yahoo Mail,
-Hotmail.  \citep{comodohack} This allowed the hacker to perform
-Man-in-the-Middle (MitM) attacks on these sites by impersonation the CAs for
-the various websites. It allowed the hacker to trick the site user's computers
-into believing the fake SSL certificates were genuine and the hacker was then
-able to read the site user's emails.  This illustrates the vulnerability in the
-SSL protocol that central authorities create.
+weak password system that was easily broken with a word list. The hacker
+retrieved the functionality to spoof the SSL certificates for various sites
+including Gmail, Yahoo Mail, and Hotmail.  \citep{comodohack} This allowed the
+hacker to perform Man-in-the-Middle (MitM) attacks on these sites by
+impersonation the CAs for the various websites. It allowed the hacker to trick
+the site user's computers into believing the fake SSL certificates were genuine
+and the hacker was then able to read the site user's emails.  This illustrates
+the vulnerability in the SSL protocol that central authorities create.
 
 This vulnerability is what the Perspectives Project sets out to fix. Their
 solution to removing central authorities is to create trusted services known as
