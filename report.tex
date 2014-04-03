@@ -194,12 +194,12 @@ agent string was:
     its SSL certificate be probed and updated in the Notaries Database.}
 \end{figure}
 
-When a server changes it's SSL certificate, it sends an HTTP request to all of
+When a server changes its SSL certificate, it sends an HTTP request to all of
 the notaries it is aware of. In our implementation, we simply have the web
 server load a web page on the notary servers, that triggers that notary to
-rescan it's certificate and update it's records appropriately. The request is
+rescan its certificate and update its records appropriately. The request is
 in the following form, where, ServerURL is simply the URL that requires
-updating of it's SSL certificate in the notary records, and update is a web
+updating of its SSL certificate in the notary records, and update is a web
 program to accomplish this task:
 
 \begin{verbatim}
