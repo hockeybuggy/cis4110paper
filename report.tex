@@ -86,7 +86,7 @@ completely insecure protocol, CAs can be compromised with Man-in-the-Middle
 (MitM) attacks and leave users vulnerable. In an effort to fix this weaknesses
 in the CA, The Perspectives Project uses a constellation of notary servers
 spread out across the Internet to monitor the SSL certificate signatures over
-time. Users install a Firefox extension that compares the signature of the
+time. Users install a Firefox web browser extension that compares the signature of the
 certificate given to them from the server to the certificates observed by the
 notaries. Our augmentation to the Perspectives system allows web servers
 currently being monitored by a number of notaries to send a message to each of
@@ -126,8 +126,8 @@ security credentials and public keys for message encryption. CAs have been
 compromised in the past resulting in successful impersonations of several
 popular, high profile websites.  In 2011 the central authority Comodo Group,
 Inc. was hacked. The attack was easily executed because of Comodo's extremely
-weak password system that was easily broken with a word list. The hacker made
-off with the SSL certificates for various sites including Gmail, Yahoo Mail,
+weak password system that was easily broken with a word list. The hacker retrieved
+the functionality to spoof the SSL certificates for various sites including Gmail, Yahoo Mail, and
 Hotmail.  \citep{comodohack} This allowed the hacker to perform
 Man-in-the-Middle (MitM) attacks on these sites by impersonation the CAs for
 the various websites. It allowed the hacker to trick the site user's computers
