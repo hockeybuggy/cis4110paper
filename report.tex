@@ -81,18 +81,17 @@ Today's web is secured with SSL and TLS, which utilizes RSA to create secure
 connections between servers and users. To ensure that the users are
 communicating with the web server they intend and not someone masquerading as
 the server, Certificate Authorities (CAs) are considered to be secure trusted
-parties that can confirm the identity of the server. While better than a
-completely insecure protocol, CAs can be compromised with Man-in-the-Middle
-(MitM) attacks and leave users vulnerable. In an effort to fix this weaknesses
-in the CA, The Perspectives Project uses a constellation of notary servers
-spread out across the Internet to monitor the SSL certificate signatures over
-time. Users install a Firefox extension that compares the signature of the
-certificate given to them from the server to the certificates observed by the
-notaries. Our augmentation to the Perspectives system allows web servers
-currently being monitored by a number of notaries to send a message to each of
-these notaries when the server changes their SSL certificate. This mitigates
-the lag between the certificate change and observation and therefore protects
-the users more efficiently.
+parties that can confirm the identity of the server. CAs can be compromised
+with Man-in-the-Middle (MitM) attacks which leaves users vulnerable. In an
+effort to fix this weaknesses in the CA, The Perspectives Project uses a
+constellation of notary servers spread out across the Internet to monitor the
+SSL certificate signatures over time. Users install a Firefox extension that
+compares the signature of the certificate given to them from the server to the
+certificates observed by the notaries. Our augmentation to the Perspectives
+system allows web servers currently being monitored by a number of notaries to
+send a message to each of these notaries when the server changes their SSL
+certificate. This mitigates the lag between the certificate change and
+observation and therefore protects the users more efficiently.
 
 \end{abstract}
 
