@@ -170,7 +170,7 @@ create an SSL connection.
 
 Notary web-crawlers make themselves known to web servers by setting a custom
 HTTP user-agent string in a manner similar to how Google and other search
-engines' web-crawlers function. When a web server observes a notary checking
+engine web-crawlers function. When a web server observes a notary checking
 its certificate, it does so by checking the user-agent string of the notary's
 request.  By doing this the server knows how recent its SSL certificate entry
 is within the notary network system.  In our implementation the notaries user
@@ -242,10 +242,10 @@ for the integrity of the system.
 \label{conclusion}
 
 Our augmentation of the Perspectives system helps protect users by creating a
-method to keep Notaries more up to date, which allows the system to do a better
+method to keep notaries more up to date, which allows the system to do a better
 job of validating signatures by reducing the false negative rate. This tendency
-for Notaries to incorrectly refute a site's SSL certificate signature because
-it is slow to update it's records is an issue with the current Perspectives
+for notaries to incorrectly refute a site's SSL certificate signature because
+it is slow to update its records is an issue with the current Perspectives
 implementation. By adding the mechanisms to create notary aware servers, we
 have improved the integrity of the system.
 
@@ -260,7 +260,7 @@ make a particular notary unresponsive to user queries. This could allow an
 attacker to perform a Man-in-the-Middle attack by rendering all of a user's
 notaries unresponsive before beginning their attack. While it may be possible
 to prevent this attack on the part of the user by not continuing with the SSL
-connection when none of their trusted notaries respond, This would still be
+connection when none of their trusted notaries respond, this would still be
 undesirable since it would prevent the user from making any secure connections.
 
 \begin{enumerate}
@@ -275,11 +275,11 @@ undesirable since it would prevent the user from making any secure connections.
     \item {Rate limit probe requests}
 
         By only allowing a certain number of probe requests in a period of time
-        the notary can ensure that it does not compromise it's ability to
+        the notary can ensure that it does not compromise its ability to
         respond to user request. This a common DOS prevention technique because
-        of how effective it is, however it is possible that this method would
+        of its efficiency, however it's possible that this method would
         become swamped at certain times since many websites change their SSL
-        certificate at times of low traffic (e.g. 3AM).
+        certificates at times of low traffic (e.g. 3AM).
 \end{enumerate}
 
 \subsection{Test our implementation more rigorously}
@@ -287,12 +287,12 @@ undesirable since it would prevent the user from making any secure connections.
 Because of the limited time frame of the project we did not have an opportunity
 to test our implementation as rigorously as we would have liked. Being a
 computer security project the robustness of the system is of utmost importance.
-Some further work could include expanding the system to many Notary aware
-servers and many Notaries that respond to probing requests.
+Some further work could include expanding the system to many notary aware
+servers and many notaries that respond to probing requests.
 
 Our Implementation would also benefit from testing with various types of
-malicious users and malicious servers. This could include clients using user
-agent string spoofing in order to have servers notify them when it changes it's
+malicious users and servers. This could include clients using user
+agent string spoofing in order to have servers notify them when it changes its
 SSL certificate.  While it is unclear whether this has any negative
 implications to security it is an avenue that should be further investigated.
 
